@@ -1,0 +1,277 @@
+{
+  "info": {
+    "name": "License Management System API",
+    "description": "Complete API collection for testing License Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Active Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/active",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "active"]
+            }
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"test.user\",\n  \"email\": \"test.user@example.com\",\n  \"fullName\": \"Test User\",\n  \"active\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"updated.user\",\n  \"email\": \"updated.user@example.com\",\n  \"fullName\": \"Updated User\",\n  \"active\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1"]
+            }
+          }
+        },
+        {
+          "name": "Add User to Group",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users/1/groups/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["users", "1", "groups", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Groups",
+      "item": [
+        {
+          "name": "Get All Groups",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups"]
+            }
+          }
+        },
+        {
+          "name": "Create Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Development Team\",\n  \"description\": \"Software Development Group\",\n  \"active\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Licenses",
+      "item": [
+        {
+          "name": "Get All Licenses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/licenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["licenses"]
+            }
+          }
+        },
+        {
+          "name": "Get Available Licenses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/licenses/available",
+              "host": ["{{baseUrl}}"],
+              "path": ["licenses", "available"]
+            }
+          }
+        },
+        {
+          "name": "Create License",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"softwareName\": \"Microsoft Office 365\",\n  \"licenseKey\": \"XXXXX-XXXXX-XXXXX-XXXXX\",\n  \"totalSeats\": 100,\n  \"description\": \"Enterprise license\",\n  \"expirationDate\": \"2025-12-31T23:59:59\",\n  \"active\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/licenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["licenses"]
+            }
+          }
+        },
+        {
+          "name": "Assign License to User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Assigned for project work\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/licenses/1/assign/user/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["licenses", "1", "assign", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Assign License to Group",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"allocatedSeats\": 25,\n  \"notes\": \"Allocated for Engineering Department\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/licenses/1/assign/group/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["licenses", "1", "assign", "group", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get License History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/licenses/1/history",
+              "host": ["{{baseUrl}}"],
+              "path": ["licenses", "1", "history"]
+            }
+          }
+        },
+        {
+          "name": "Get Recent History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/licenses/history/recent",
+              "host": ["{{baseUrl}}"],
+              "path": ["licenses", "history", "recent"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
